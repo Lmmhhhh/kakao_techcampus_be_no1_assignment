@@ -23,10 +23,9 @@ public class Calculator_class_Lv2 {
                 if (n2 == 0) {
                     System.out.println("0으로 나눌 수 없습니다.");
                     return null;
-                }else{
-                    res = n1 / n2;
-                    break;
                 }
+                res = n1 / n2;
+                break;
 
             default:
                 System.out.println("유효하지 않은 연산자입니다.");
