@@ -7,12 +7,12 @@ import java.util.Scanner;
 public class Calculator_Lv3 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        ArithmeticCalculator_Lv3 cal = new ArithmeticCalculator_Lv3();
+        ArithmeticCalculator_Lv3<Double> cal = new ArithmeticCalculator_Lv3<>();
 
         while (true) {
-            //1) 정수 입력(readint 함수 이용)
-            int n1 = readint(sc, "첫 번째 정수 입력: ");
-            int n2 = readint(sc, "두 번째 정수 입력: ");
+            //1) 실수 입력(readDouble 함수 이용)
+            double n1 = readDouble(sc, "첫 번째 실수 입력: ");
+            double n2 = readDouble(sc, "두 번째 실수 입력: ");
 
             //2) 연산자 입력 받기
             System.out.print("사칙연산 기호 입력 (+,-,x,/):");
@@ -20,7 +20,7 @@ public class Calculator_Lv3 {
             OperatorType_Lv3 op = OperatorType_Lv3.fromChar(opChar);
 
             //Cal class 이용하여 계산
-            Integer res = cal.calculate(n1,n2,op);
+            Double res = cal.calculate(n1,n2,op);
 
             if (res!=null){
                 System.out.println("결과: "+ res);
@@ -37,20 +37,15 @@ public class Calculator_Lv3 {
 
     }
 
-    // 정수가 아닌 수 입력 시 에러처리
-    private static int readint(Scanner sc, String msg){
+    // 실수가 아닌 수 입력 시 에러처리
+    private static double readDouble(Scanner sc, String msg){
         while(true){
             System.out.print(msg);
             String input = sc.next();
             try {
-                int value = Integer.parseInt(input);
-                if (value < 0) {
-                    System.out.println("0 이상의 정수를 입력하세요.");
-                } else {
-                    return value;
-                }
+                return Double.parseDouble(input);
             } catch (NumberFormatException e) {
-                System.out.println("정수를 입력하세요.");
+                System.out.println("실수를 입력하세요.");
             }
         }
     }
