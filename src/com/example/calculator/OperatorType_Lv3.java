@@ -1,5 +1,7 @@
 package com.example.calculator;
 
+import java.util.Scanner;
+
 public enum OperatorType_Lv3 {
     PLUS('+'),
     MINUS('-'),
@@ -15,13 +17,16 @@ public enum OperatorType_Lv3 {
         return sym;
     }
 
-    public static OperatorType_Lv3 fromChar(char in){
-        for(OperatorType_Lv3 op : OperatorType_Lv3.values()){
-            if (op.getSym() == in){
-                return op;
+    public static OperatorType_Lv3 fromChar(Scanner sc){
+        while(true){
+            System.out.print("사칙연산 기호 입력 (+,-,x,/):");
+            char in = sc.next().charAt(0);
+            for(OperatorType_Lv3 op : OperatorType_Lv3.values()){
+                if (op.getSym() == in){
+                    return op;
+                }
             }
+            System.out.println("유효하지 않은 연산자입니다.");
         }
-        System.out.println("유효하지 않은 연산자입니다.");
-        return null;
     }
 }
